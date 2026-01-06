@@ -4,12 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Unresolved; Universe</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="logo.png">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
-body{background:#0b0b10;color:#e5e5e5;scroll-behavior:smooth;}
+body{background:#0b0b10;color:#e5e5e5;scroll-behavior:smooth;transition: all 0.3s;overflow-x:hidden;padding-top:80px;}
 
 /* NAVBAR */
 .navbar{
@@ -25,124 +24,138 @@ body{background:#0b0b10;color:#e5e5e5;scroll-behavior:smooth;}
   align-items:center;
   justify-content:space-between;
   box-shadow:0 20px 40px rgba(0,0,0,.6);
-  z-index:999;
-  transition: top 0.3s ease;
+  z-index:1000;
 }
-.logo{font-weight:700;font-size:22px;color:#b56cff;}
-.nav-links{
-  display:flex;
-  gap:20px;
-}
-.nav-links a{
-  text-decoration:none;
-  color:#ccc;
-  font-size:14px;
-  font-weight:600;
-}
-.nav-links a:hover{color:#b56cff}
 
-/* Hamburger icon */
+.logo-container{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.logo{
+  font-weight:700;
+  font-size:22px;
+  color:#b56cff;
+}
+
+/* Play button */
+#playBtn{
+  width:28px;
+  height:28px;
+  border:none;
+  border-radius:50%;
+  background:#1db954;
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:14px;
+  transition: transform 0.2s;
+}
+#playBtn:hover{
+  transform: scale(1.1);
+}
+
+/* Hamburger */
 .hamburger{
   display:none;
   flex-direction:column;
   cursor:pointer;
   gap:5px;
-  z-index:1001;
+  width:25px;
+  height:20px;
+  justify-content:space-between;
 }
 .hamburger div{
   width:25px;
   height:3px;
   background:#b56cff;
-  transition:0.3s;
+  border-radius:2px;
+  transition: all 0.4s ease;
 }
-.hamburger.active div:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
-.hamburger.active div:nth-child(2){opacity:0;}
-.hamburger.active div:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.hamburger.active div:nth-child(1){
+  transform: rotate(45deg) translate(5px,5px);
+}
+.hamburger.active div:nth-child(2){
+  opacity:0;
+}
+.hamburger.active div:nth-child(3){
+  transform: rotate(-45deg) translate(5px,-5px);
+}
 
-/* MOBILE MENU */
-.nav-links.mobile{
+/* OVERLAY */
+.overlay{
   position:fixed;
   top:0;
-  right:-50%;
-  width:50%;
+  left:0;
+  width:100%;
+  height:100%;
+  display:none;
+  z-index:999;
+  background: rgba(0,0,0,0.3);
+}
+
+/* MOBILE MENU */
+.nav-links{
+  position:fixed;
+  top:0;
+  right:-100%;
   height:100vh;
+  width:50%;
   background:#14141c;
+  display:flex;
   flex-direction:column;
   justify-content:center;
-  gap:24px;
-  padding-left:30px;
-  z-index:998;
-  transition:.4s ease;
-  display:none;
+  align-items:flex-end;
+  padding-right:20px;
+  gap:30px;
+  transition:right 0.4s ease;
+  z-index:1000;
 }
-.nav-links.mobile.show{right:0; display:flex;}
+.nav-links a{
+  text-decoration:none;
+  color:#ccc;
+  font-size:18px;
+  font-weight:600;
+  transition: color 0.3s;
+}
+.nav-links a:hover{color:#b56cff;}
 
-/* HERO */
-.hero{height:100vh;display:flex;align-items:center;justify-content:center;width:100%;background:linear-gradient(180deg,#1a0e2c 0%,#0b0b10 100%);padding-top:80px;}
-.hero-content{display:flex;align-items:center;justify-content:space-between;max-width:1200px;width:100%;padding:60px 20px;}
-.hero-img img{max-width:360px;filter:drop-shadow(0 20px 40px rgba(0,0,0,.7));}
-.hero-text{max-width:480px;}
-.hero-text h1{font-size:34px;line-height:1.4;color:#fff;}
-.hero-text span{color:#b56cff;}
-.hero-text button{margin-top:28px;padding:12px 30px;border:none;border-radius:24px;background:#b56cff;color:#fff;font-size:13px;cursor:pointer;}
-.hero-text button:hover{opacity:.85}
+/* show menu */
+.overlay.show{
+  display:block;
+}
 
-/* UNIVERSE */
-.universe{width:100%;padding:100px 20px;text-align:left;background:linear-gradient(180deg,#26194a 0%,#1e1235 100%);}
-.universe h2{font-size:28px;color:#b56cff;margin-bottom:20px;max-width:1200px;margin-left:auto;margin-right:auto;}
-.universe-desc{font-size:16px;line-height:1.8;color:#ccc;max-width:1200px;margin-left:auto;margin-right:auto;}
-
-/* ISSUE DETAIL */
-.issue-detail{width:100%;padding:100px 20px;text-align:center;background:linear-gradient(180deg,#26194a 0%,#1e1235 100%);}
-.issue-text{font-family:'Segoe UI', Tahoma, sans-serif;font-size:18px;line-height:1.7;max-width:1200px;margin:0 auto;}
-.issue-text h2{margin-bottom:20px;color:#b56cff;}
-.issue-thumb{margin:30px 0;}
-.issue-thumb img{max-width:100%;height:auto;}
-
-/* TEAM */
-#team{padding:120px 8%;background:linear-gradient(180deg, #1a0e2c 0%, #0b0b10 100%);text-align:center;}
-.team-section{padding:100px 8%;}
-.team-title{font-size:56px;font-weight:900;color:#b56cff;margin-bottom:80px;}
-.team-item{display:flex;align-items:center;gap:30px;margin-bottom:70px;}
-.team-item.right{flex-direction:row-reverse;}
-.team-item img{width:420px;height:220px;object-fit:cover;border-radius:18px;}
-.team-info h3{font-size:24px;margin-bottom:6px;}
-.team-info p{opacity:.7;}
-
-/* RESPONSIVE */
+/* Hamburger tampil mobile */
 @media(max-width:900px){
-  .hamburger{display:flex;}
-  .nav-links.desktop{display:none;}
-  .hero-content{flex-direction:column;text-align:center;padding:40px 20px;}
-  .hero-img img{max-width:260px;margin-bottom:30px;}
-  .hero-text h1{font-size:26px;}
-  .logo{font-size:20px;}
-  .team-item, .team-item.right{flex-direction:column;text-align:center;}
-  .team-item img{width:100%;height:200px;}
+  .hamburger{
+    display:flex;
+  }
 }
-
-body.lock-scroll{overflow:hidden;}
 </style>
 </head>
 <body>
 
 <!-- NAVBAR -->
 <div class="navbar" id="navbar">
-  <div class="logo">UNRESOLVED;</div>
-  <div class="nav-links desktop" id="navLinksDesktop">
-    <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Universe/">HOME</a>
-    <a href="#">STORY</a>
-    <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Characters/">CHARACTER</a>
-    <a href="#">WORLD</a>
-  </div>
-  <div class="nav-links mobile" id="navLinksMobile">
-    <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Universe/">HOME</a>
-    <a href="#">STORY</a>
-    <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Characters/">CHARACTER</a>
-    <a href="#">WORLD</a>
+  <div class="logo-container">
+    <div class="logo">UNRESOLVED;</div>
+    <button id="playBtn">▶</button>
   </div>
   <div class="hamburger" id="hamburger">
     <div></div><div></div><div></div>
+  </div>
+</div>
+
+<!-- MOBILE MENU & OVERLAY -->
+<div class="overlay" id="overlay">
+  <div class="nav-links" id="navLinks">
+    <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Universe/">HOME</a>
+    <a href="#">STORY</a>
+    <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Characters/">CHARACTER</a>
+    <a href="#">WORLD</a>
   </div>
 </div>
 
@@ -214,40 +227,50 @@ body.lock-scroll{overflow:hidden;}
 </section>
 
 <!-- AUDIO -->
-<audio id="song">
-  <source src="song.mp3" type="audio/mp3">
+<audio id="audio">
+  <source id="audioSource" type="audio/mpeg" src="Cahaya Pada Kita(1).mp3">
 </audio>
 
 <script>
+// BUTTON PLAY/PAUSE
+const audio = document.getElementById('audio');
+const playBtn = document.getElementById('playBtn');
+playBtn.addEventListener('click', () => {
+  if(audio.paused){
+    audio.play();
+    playBtn.textContent = "❚❚";
+  } else {
+    audio.pause();
+    playBtn.textContent = "▶";
+  }
+});
+
+// LOOP AUDIO DENGAN DELAY 2 SAAT
+audio.addEventListener('ended', () => {
+  setTimeout(()=>audio.play(),2000);
+});
+
+// HAMBURGER MENU
 const hamburger = document.getElementById('hamburger');
-const navLinksMobile = document.getElementById('navLinksMobile');
-const overlay = document.createElement('div');
-overlay.style.position='fixed';
-overlay.style.inset='0';
-overlay.style.background='rgba(0,0,0,0.5)';
-overlay.style.zIndex='998';
-overlay.style.opacity='0';
-overlay.style.pointerEvents='none';
-overlay.style.transition='opacity 0.3s';
-document.body.appendChild(overlay);
+const overlay = document.getElementById('overlay');
+const navLinks = document.getElementById('navLinks');
 
-hamburger.addEventListener('click', ()=>{
+hamburger.addEventListener('click', () => {
+  overlay.classList.toggle('show');
   hamburger.classList.toggle('active');
-  navLinksMobile.classList.toggle('show');
-  overlay.style.opacity = navLinksMobile.classList.contains('show') ? '1' : '0';
-  overlay.style.pointerEvents = navLinksMobile.classList.contains('show') ? 'auto' : 'none';
-  document.body.classList.toggle('lock-scroll');
+  document.body.style.overflow = overlay.classList.contains('show') ? 'hidden' : 'auto';
 });
 
-overlay.addEventListener('click', ()=>{
-  hamburger.classList.remove('active');
-  navLinksMobile.classList.remove('show');
-  overlay.style.opacity='0';
-  overlay.style.pointerEvents='none';
-  document.body.classList.remove('lock-scroll');
+// tutup menu bila klik overlay tapi bukan link
+overlay.addEventListener('click', (e) => {
+  if(!navLinks.contains(e.target)){
+    overlay.classList.remove('show');
+    hamburger.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
 });
 
-// Scroll button
+// Scroll button ke Issue
 const btn = document.getElementById('jelajahBtn');
 const target = document.getElementById('issue');
 btn.addEventListener('click', () => {
@@ -268,12 +291,6 @@ window.addEventListener('scroll', ()=>{
   }
   prevScroll = currentScroll;
 });
-
-// Audio play/pause + loop 2s
-const audio = document.getElementById('song');
-let play=false;
-document.querySelectorAll('.logo, .nav-links a').forEach(()=>{}); // placeholder for audio buttons if needed
-audio.addEventListener("ended",()=>{setTimeout(()=>audio.play(),2000);});
 </script>
 
 </body>
