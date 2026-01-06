@@ -4,16 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Unresolved; Universe</title>
-<link rel="icon" type="image/png" href="logo.png">
 
 <style>
 body{
   margin:0;
   font-family:'Segoe UI',sans-serif;
-  background:#0b0b10;
-  color:#e5e5e5;
-  scroll-behavior:smooth;
+  background:linear-gradient(135deg,#1f1c2c,#928DAB);
+  min-height:100vh;
   padding-top:80px;
+  transition: all 0.3s;
   overflow-x:hidden;
 }
 
@@ -32,37 +31,22 @@ body{
   justify-content:space-between;
   box-shadow:0 20px 40px rgba(0,0,0,.6);
   z-index:1000;
+  transition: top 0.3s;
 }
 
+/* LOGO */
 .logo-container{
   display:flex;
   align-items:center;
   gap:10px;
 }
-
 .logo{
   font-weight:700;
   font-size:22px;
   color:#b56cff;
 }
 
-/* Desktop nav links */
-.navbar .nav-desktop{
-  display:flex;
-  gap:25px;
-}
-.navbar .nav-desktop a{
-  color:#ccc;
-  text-decoration:none;
-  font-weight:600;
-  font-size:16px;
-  transition:color 0.3s;
-}
-.navbar .nav-desktop a:hover{
-  color:#b56cff;
-}
-
-/* Play button */
+/* PLAY BUTTON */
 #playBtn{
   width:28px;
   height:28px;
@@ -82,7 +66,7 @@ body{
   transform: scale(1.1);
 }
 
-/* Hamburger */
+/* HAMBURGER */
 .hamburger{
   display:none;
   flex-direction:column;
@@ -109,7 +93,23 @@ body{
   transform: rotate(-45deg) translate(5px,-5px);
 }
 
-/* OVERLAY */
+/* DESKTOP MENU LINKS */
+.nav-menu{
+  display:flex;
+  gap:30px;
+}
+.nav-menu a{
+  text-decoration:none;
+  color:#ccc;
+  font-weight:600;
+  font-size:16px;
+  transition: color 0.3s;
+}
+.nav-menu a:hover{
+  color:#b56cff;
+}
+
+/* OVERLAY & MOBILE MENU */
 .overlay{
   position:fixed;
   top:0;
@@ -120,8 +120,6 @@ body{
   z-index:999;
   background: rgba(0,0,0,0.3);
 }
-
-/* MOBILE MENU */
 .nav-links{
   position:fixed;
   top:0;
@@ -138,7 +136,6 @@ body{
   transition:right 0.4s ease;
   z-index:1000;
 }
-
 .nav-links a{
   text-decoration:none;
   color:#ccc;
@@ -146,7 +143,7 @@ body{
   font-weight:600;
   transition: color 0.3s;
 }
-.nav-links a:hover{color:#b56cff}
+.nav-links a:hover{color:#b56cff;}
 
 /* show menu */
 .overlay.show{
@@ -158,22 +155,31 @@ body{
 
 /* Hamburger tampil mobile */
 @media(max-width:900px){
-  .hamburger{
-    display:flex;
-  }
-  .nav-desktop{
-    display:none;
-  }
+  .hamburger{display:flex;}
+  .nav-menu{display:none;}
 }
 
-/* HERO TITLE */
-h1{text-align:center;color:#b56cff;margin:60px 0;font-size:48px;}
+/* HERO */
+.hero{height:90vh;display:flex;align-items:center;justify-content:center;width:100%;background:linear-gradient(180deg,#26194a 0%,#1e1235 100%);}
+.hero-content{display:flex;align-items:center;justify-content:space-between;max-width:1200px;width:100%;padding:60px 20px;}
+.hero-img img{max-width:360px;filter:drop-shadow(0 20px 40px rgba(0,0,0,.7));}
+.hero-text{max-width:480px;}
+.hero-text h1{font-size:34px;line-height:1.4;color:#fff;}
+.hero-text span{color:#b56cff;}
+.hero-text button{margin-top:28px;padding:12px 30px;border:none;border-radius:24px;background:#b56cff;color:#fff;font-size:13px;cursor:pointer;}
+.hero-text button:hover{opacity:.85}
 
-/* CONTENT CONTAINER */
-.container{
-  max-width:900px;
-  margin:20px auto;
-  padding:0 20px 60px;
+/* UNIVERSE SECTION */
+.universe{width:100%;padding:100px 20px;text-align:left;background:linear-gradient(180deg,#26194a 0%,#1e1235 100%);}
+.universe h2{font-size:28px;color:#b56cff;margin-bottom:20px;max-width:1200px;margin-left:auto;margin-right:auto;}
+.universe-desc{font-size:16px;line-height:1.8;color:#ccc;max-width:1200px;margin-left:auto;margin-right:auto;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-content{flex-direction:column;text-align:center;padding:40px 20px;}
+  .hero-img img{max-width:260px;margin-bottom:30px;}
+  .hero-text h1{font-size:26px;}
+  .logo{font-size:20px;}
 }
 </style>
 </head>
@@ -185,7 +191,7 @@ h1{text-align:center;color:#b56cff;margin:60px 0;font-size:48px;}
     <div class="logo">UNRESOLVED; |</div>
     <button id="playBtn">▶</button>
   </div>
-  <div class="nav-desktop">
+  <div class="nav-menu">
     <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Universe/">HOME</a>
     <a href="#story">STORY</a>
     <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Characters/">CHARACTERS</a>
@@ -208,58 +214,86 @@ h1{text-align:center;color:#b56cff;margin:60px 0;font-size:48px;}
   </div>
 </div>
 
-<h1>UNRESOLVED; UNIVERSE</h1>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-img">
+      <img src="logo.png" alt="Character">
+    </div>
+    <div class="hero-text">
+      <h1>
+        SELAMAT DATANG KE<br>
+        <span>UNRESOLVED;</span><br>
+        JELAJAHI LATAR BELAKANG,<br>
+        WATAK DAN<br>
+        RAHSIA YANG TERSEMBUNYI
+      </h1>
+      <button id="jelajahBtn">JELAJAH</button>
+    </div>
+  </div>
+</section>
 
-<div class="container">
-  <p>Selamat datang ke Universe Unresolved;…</p>
-  <!-- Content Universe lain di sini -->
-</div>
+<!-- UNIVERSE SECTION -->
+<section class="universe" id="story">
+  <h2>TENTANG</h2>
+  <p class="universe-desc">
+    Unresolved; Universe ialah dunia cerita yang merangkumi pelbagai kisah
+    tentang trauma, konflik dalaman dan kebenaran yang tidak pernah lengkap.
+    Setiap cerita berdiri sendiri, namun saling berkait melalui tema emosi,
+    misteri dan masa silam yang retak.
+  </p>
+</section>
+
+<!-- AUDIO -->
+<audio id="song">
+  <source src="song.mp3" type="audio/mp3">
+</audio>
 
 <script>
-// AUDIO PLAY
-const audio = new Audio("song.mp3");
+// PLAY BUTTON
+const audio = document.getElementById('song');
 const playBtn = document.getElementById('playBtn');
-playBtn.addEventListener('click', ()=>{
-  if(audio.paused){
-    audio.play();
-    playBtn.textContent="❚❚";
-  } else{
-    audio.pause();
-    playBtn.textContent="▶";
-  }
+playBtn.addEventListener('click', () => {
+  if(audio.paused){ audio.play(); playBtn.textContent="❚❚"; }
+  else{ audio.pause(); playBtn.textContent="▶"; }
 });
-audio.addEventListener('ended', ()=>setTimeout(()=>audio.play(),2000));
+audio.addEventListener('ended',()=>{ setTimeout(()=>audio.play(),2000); });
 
 // HAMBURGER MENU
 const hamburger = document.getElementById('hamburger');
 const overlay = document.getElementById('overlay');
 const navLinks = document.getElementById('navLinks');
 
-hamburger.addEventListener('click', ()=>{
-  hamburger.classList.toggle('active');
+hamburger.addEventListener('click', () => {
   overlay.classList.toggle('show');
+  hamburger.classList.toggle('active');
   document.body.style.overflow = overlay.classList.contains('show') ? 'hidden' : 'auto';
 });
-
-// Tutup menu bila klik luar
-overlay.addEventListener('click', e=>{
+overlay.addEventListener('click', (e) => {
   if(!navLinks.contains(e.target)){
     overlay.classList.remove('show');
     hamburger.classList.remove('active');
-    document.body.style.overflow='auto';
+    document.body.style.overflow = 'auto';
   }
 });
 
-// NAVBAR HIDE/SHOW SCROLL
+// SCROLL BUTTON
+const btn = document.getElementById('jelajahBtn');
+const target = document.querySelector('.universe');
+btn.addEventListener('click', () => {
+  const yOffset = -60;
+  const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+  window.scrollTo({ top: y, behavior: 'smooth' });
+});
+
+// NAVBAR HIDE/SHOW ON SCROLL
 let prevScroll = window.pageYOffset;
-window.addEventListener('scroll', ()=>{
-  const navbar = document.getElementById("navbar");
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
   const currentScroll = window.pageYOffset;
   if(currentScroll > prevScroll && currentScroll > 100){
     navbar.style.top="-100px";
-  } else{
-    navbar.style.top="0";
-  }
+  } else { navbar.style.top="0"; }
   prevScroll = currentScroll;
 });
 </script>
