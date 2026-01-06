@@ -184,6 +184,57 @@ body{background:#0b0b10;color:#e5e5e5;scroll-behavior:smooth;}
     height:200px;
   }
 }
+
+  @media(max-width:900px){
+
+  body.lock-scroll{
+    overflow:hidden;
+  }
+
+  .mobile-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.5);
+    width:50%;
+    z-index:998;
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+  }
+
+  .mobile-menu{
+    position:fixed;
+    top:0;
+    right:-50%;
+    width:50%;
+    height:100vh;
+    background:#14141c;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:24px;
+    padding-left:30px;
+    z-index:999;
+    transition:.4s ease;
+  }
+
+  .mobile-menu a{
+    color:#fff;
+    font-size:18px;
+    text-decoration:none;
+    font-weight:600;
+  }
+
+  .mobile-menu.show{
+    right:0;
+  }
+
+  .mobile-overlay.show{
+    opacity:1;
+    pointer-events:auto;
+  }
+
+}
 </style>
 </head>
 <body>
@@ -202,6 +253,14 @@ body{background:#0b0b10;color:#e5e5e5;scroll-behavior:smooth;}
     <div></div>
     <div></div>
   </div>
+</div>
+
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Universe/">HOME</a>
+  <a href="#">STORY</a>
+  <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Characters/">CHARACTER</a>
+  <a href="#">WORLD</a>
 </div>
 
 <!-- HERO -->
@@ -298,12 +357,22 @@ body{background:#0b0b10;color:#e5e5e5;scroll-behavior:smooth;}
 
 <script>
   // Hamburger toggle
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
+  const overlay = document.getElementById('mobileOverlay');
+const mobileMenu = document.getElementById('mobileMenu');
 
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
-  });
+hamburger.addEventListener('click', () => {
+  mobileMenu.classList.add('show');
+  overlay.classList.add('show');
+  document.body.classList.add('lock-scroll');
+});
+
+overlay.addEventListener('click', closeMenu);
+
+function closeMenu(){
+  mobileMenu.classList.remove('show');
+  overlay.classList.remove('show');
+  document.body.classList.remove('lock-scroll');
+}
 
   // Scroll button
   const btn = document.getElementById('jelajahBtn');
@@ -330,3 +399,4 @@ body{background:#0b0b10;color:#e5e5e5;scroll-behavior:smooth;}
 
 </body>
 </html>
+
