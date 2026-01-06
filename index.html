@@ -33,7 +33,6 @@ body{
   z-index:1000;
   transition:top .3s ease;
 }
-
 .logo{
   font-weight:700;
   font-size:22px;
@@ -45,7 +44,6 @@ body{
   display:flex;
   gap:20px;
 }
-
 .nav-links a{
   text-decoration:none;
   color:#ccc;
@@ -65,8 +63,8 @@ body{
   width:26px;
   height:3px;
   background:#b56cff;
-  transition:.4s;
   border-radius:2px;
+  transition:.4s;
 }
 .hamburger.active div:nth-child(1){
   transform:rotate(45deg) translate(5px,5px);
@@ -110,19 +108,15 @@ body{
   transition:right .4s ease;
 }
 .mobile-menu a{
-  color:#fff;
   text-decoration:none;
+  color:#fff;
   font-size:20px;
   font-weight:600;
 }
 .mobile-menu a:hover{color:#b56cff}
 
-.overlay.show{
-  display:block;
-}
-.overlay.show .mobile-menu{
-  right:0;
-}
+.overlay.show{display:block;}
+.overlay.show .mobile-menu{right:0;}
 
 /* HERO */
 .hero{
@@ -141,8 +135,14 @@ body{
   align-items:center;
   justify-content:space-between;
 }
-.hero-img img{max-width:360px;}
-.hero-text h1{font-size:34px;line-height:1.4;}
+.hero-img img{
+  max-width:360px;
+  filter:drop-shadow(0 20px 40px rgba(0,0,0,.7));
+}
+.hero-text h1{
+  font-size:34px;
+  line-height:1.4;
+}
 .hero-text span{color:#b56cff;}
 .hero-text button{
   margin-top:28px;
@@ -154,6 +154,75 @@ body{
   cursor:pointer;
 }
 
+/* UNIVERSE */
+.universe{
+  width:100%;
+  padding:100px 20px;
+  background:linear-gradient(180deg,#26194a 0%,#1e1235 100%);
+}
+.universe h2{
+  font-size:28px;
+  color:#b56cff;
+  max-width:1200px;
+  margin:0 auto 20px;
+}
+.universe-desc{
+  font-size:16px;
+  line-height:1.8;
+  color:#ccc;
+  max-width:420px;
+  margin-left:23%;
+}
+
+/* TEAM */
+.team-section{
+  padding:120px 8%;
+  background:linear-gradient(180deg,#1a0e2c 0%,#0b0b10 100%);
+}
+.team-title{
+  font-size:56px;
+  font-weight:900;
+  color:#b56cff;
+  text-align:center;
+  margin-bottom:80px;
+}
+.team-item{
+  display:flex;
+  align-items:center;
+  gap:30px;
+  margin-bottom:70px;
+}
+.team-item.right{flex-direction:row-reverse;}
+.team-item img{
+  width:420px;
+  height:220px;
+  object-fit:cover;
+  border-radius:18px;
+}
+.team-info h3{font-size:24px;}
+.team-info p{opacity:.7;}
+
+/* ISSUE */
+.issue-detail{
+  padding:120px 20px;
+  background:linear-gradient(180deg,#26194a 0%,#1e1235 100%);
+  text-align:center;
+}
+.issue-text{
+  max-width:1200px;
+  margin:0 auto;
+  font-size:18px;
+  line-height:1.7;
+}
+.issue-text h2{
+  margin-bottom:20px;
+  color:#b56cff;
+}
+.issue-thumb img{
+  max-width:100%;
+  margin:30px 0;
+}
+
 /* RESPONSIVE */
 @media(max-width:900px){
   .nav-links{display:none;}
@@ -163,7 +232,21 @@ body{
     flex-direction:column;
     text-align:center;
   }
-  .hero-img img{max-width:260px;margin-bottom:30px;}
+  .hero-img img{
+    max-width:260px;
+    margin-bottom:30px;
+  }
+  .universe-desc{margin-left:auto;margin-right:auto;}
+
+  .team-item,
+  .team-item.right{
+    flex-direction:column;
+    text-align:center;
+  }
+  .team-item img{
+    width:100%;
+    height:200px;
+  }
 }
 </style>
 </head>
@@ -189,7 +272,7 @@ body{
 <!-- MOBILE MENU -->
 <div class="overlay" id="overlay">
   <div class="mobile-menu" id="mobileMenu">
-    <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Universe/">HOME</a>
+    <a href="#">HOME</a>
     <a href="#">STORY</a>
     <a href="#">CHARACTER</a>
     <a href="#">WORLD</a>
@@ -206,10 +289,51 @@ body{
       <h1>
         SELAMAT DATANG KE<br>
         <span>UNRESOLVED;</span><br>
-        JELAJAHI DUNIA YANG RETAK
+        JELAJAHI LATAR BELAKANG,<br>
+        WATAK DAN RAHSIA
       </h1>
-      <button>JELAJAH</button>
+      <button id="jelajahBtn">JELAJAH</button>
     </div>
+  </div>
+</section>
+
+<!-- UNIVERSE -->
+<section class="universe">
+  <h2>TENTANG</h2>
+  <p class="universe-desc">
+    Unresolved; Universe ialah dunia cerita yang merangkumi pelbagai kisah
+    tentang trauma, konflik dalaman dan kebenaran yang tidak pernah lengkap.
+  </p>
+</section>
+
+<!-- TEAM -->
+<section class="team-section">
+  <h2 class="team-title">TEAM</h2>
+
+  <div class="team-item">
+    <img src="img/kazera.jpg">
+    <div class="team-info"><h3>None</h3><p>Creative Director</p></div>
+  </div>
+
+  <div class="team-item right">
+    <img src="img/shanon.jpg">
+    <div class="team-info"><h3>None</h3><p>Illustrator</p></div>
+  </div>
+
+  <div class="team-item">
+    <img src="img/nelson.jpg">
+    <div class="team-info"><h3>KaiderYr</h3><p>Developer</p></div>
+  </div>
+</section>
+
+<!-- ISSUE -->
+<section class="issue-detail" id="issue">
+  <div class="issue-text">
+    <h2>Unresolved; Issue</h2>
+    <img src="thumbnail.jpg" class="issue-thumb">
+    <p>
+      Mengisahkan Ahmad Zayn Rafi, remaja 16 tahun yang hidup dalam kesunyian sejak lahir.
+    </p>
   </div>
 </section>
 
@@ -232,8 +356,13 @@ overlay.onclick = e => {
     document.body.style.overflow = "auto";
   }
 };
+
+// scroll button
+document.getElementById("jelajahBtn").onclick = () => {
+  document.getElementById("issue")
+    .scrollIntoView({behavior:"smooth"});
+};
 </script>
 
 </body>
 </html>
-
